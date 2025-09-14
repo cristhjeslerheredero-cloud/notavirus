@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>From Jesler 💌</title>
+  <style>
+    body {
+      background: #fff0f5;
+      font-family: 'Segoe UI', sans-serif;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 50px;
+      height: 100vh;
+    }
+
+    .letter {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      max-width: 600px;
+      text-align: center;
+      position: relative;
+    }
+
+    .heart {
+      color: red;
+      font-size: 24px;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.2s ease;
+    }
+
+    .heart:hover {
+      transform: scale(1.4);
+    }
+
+    .floating-heart {
+      position: absolute;
+      font-size: 20px;
+      color: red;
+      animation: floatUp 2s ease-out forwards;
+    }
+
+    @keyframes floatUp {
+      0% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-100px); }
+    }
+
+    .response-btns {
+      margin-top: 20px;
+    }
+
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #ff69b4;
+      color: white;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ff1493;
+    }
+
+    #response {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="letter" onclick="dropHeart(event)">
+    <h2>Hello...</h2>
+    <p>
+      I don’t really know how to say this out loud, so I’m writing it here instead.<br><br>
+      I’ve been feeling something — something real — and I can’t keep it in anymore.<br>
+      Every time I see you, it’s like the world slows down just a bit.<br><br>
+      So... here it is. I like you. A lot.<br><br>
+      – Jesler 💌
+    </p>
+    <div class="heart" onclick="dropHeart(event)">❤️</div>
+
+    <div class="response-btns">
+      <p>Do you feel the same?</p>
+      <button onclick="respond(true)">Yes 💖</button>
+      <button onclick="respond(false)">No 😢</button>
+    </div>
+
+    <div id="response"></div>
+  </div>
+
+  <script>
+    function dropHeart(event) {
+      const heart = document.createElement('div');
+      heart.classList.add('floating-heart');
+      heart.innerText = '❤️';
+      document.body.appendChild(heart);
+      heart.style.left = event.pageX + 'px';
+      heart.style.top = event.pageY + 'px';
+
+      setTimeout(() => {
+        heart.remove();
+      }, 2000);
+    }
+
+    function respond(like) {
+      const response = document.getElementById('response');
+      if (like) {
+        response.innerHTML = "I love you too my nigga 💘";
+      } else {
+        response.innerHTML = "Fuck you NIGGA BITCH 💔";
+      }
+    }
+  </script>
+
+</body>
+</html>
